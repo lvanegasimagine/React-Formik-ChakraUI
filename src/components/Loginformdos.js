@@ -7,8 +7,9 @@ import {
   VStack,
   Button
 } from "@chakra-ui/react";
-import { Formik } from "formik";
+import { Field, Formik } from "formik";
 import * as Yup from "yup";
+import TextField from "../hooks/TextField";
 
 const Loginformdos = () => {
   return (
@@ -38,33 +39,20 @@ const Loginformdos = () => {
           autoComplete="off"
         >
           <Heading>Sign Up Hooks Formik</Heading>
-          <FormControl
-            isInvalid={formik.errors.username && formik.touched.username}
-          >
-            <FormLabel>User Name </FormLabel>
-            <Input
-              name="username"
-              placeholder="Enter username"
-              {...formik.getFieldProps("username")} // Opcion 1 - llama a todas las props (handleChange, value, handleBlur, etc)
-            />
-            <FormErrorMessage>{formik.errors.username}</FormErrorMessage>
-          </FormControl>
-          <FormControl
-            isInvalid={formik.errors.password && formik.touched.password}
-          >
-            <FormLabel>Password </FormLabel>
-            <Input
-              type="password"
-              name="password"
-              placeholder="Enter Password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
-          </FormControl>
+          <TextField
+            name="username"
+            label="User Name"
+            placeholder="Enter User Name"
+          />
+          <TextField
+            name="password"
+            type="password"
+            label="Password"
+            placeholder="Enter Password"
+          />
+
           <Button type="submit" colorScheme="blue">
-            Submit
+            Enviar
           </Button>
         </VStack>
       )}
